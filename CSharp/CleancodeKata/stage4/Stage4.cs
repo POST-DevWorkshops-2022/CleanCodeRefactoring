@@ -1,7 +1,7 @@
 ﻿namespace CleancodeKata.stage4
 {
     /**
-     * Make this code clean.
+     * Make this code clean by starting to give more meaningful names.
      */
     public class Stage4
     {
