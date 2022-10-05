@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace CleancodeKata.stage1
+﻿namespace CleancodeKata.stage1
 {
     /**
      * Uncomment the tests, and make them pass
@@ -27,11 +25,6 @@ namespace CleancodeKata.stage1
             {
                 return price;
             }
-        }
-
-        public int ComputePrice(Items[] cart)
-        {
-            return cart.Sum(c => c.GetPrice());
         }
     }
 }

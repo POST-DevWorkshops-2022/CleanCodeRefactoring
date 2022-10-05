@@ -7,37 +7,66 @@
     {
         public static int ComputeScore(int dice1, int dice2, int dice3)
         {
-            if (AllAreEqual(dice1, dice2, dice3))
+            int score;
+            if (dice1 == dice2 && dice1 == dice3)
             {
-                return 0;
+                score = 0;
+            }
+            else
+            {
+                if (dice1 == dice2 || dice2 == dice3 || dice1 == dice3)
+                {
+                    score = (dice1 + dice2 + dice3) * 2;
+                }
+                else
+                {
+                    if (dice1 == 1 && dice2 == 2 && dice3 == 3)
+                    {
+                        score = 100;
+                    }
+                    else
+                    {
+                        if (dice1 == 1 && dice2 == 3 && dice3 == 2)
+                        {
+                            score = 100;
+                        }
+                        else
+                        {
+                            if (dice1 == 2 && dice2 == 1 && dice3 == 3)
+                            {
+                                score = 100;
+                            }
+                            else
+                            {
+                                if (dice1 == 2 && dice2 == 3 && dice3 == 1)
+                                {
+                                    score = 100;
+                                }
+                                else
+                                {
+                                    if (dice1 == 3 && dice2 == 1 && dice3 == 2)
+                                    {
+                                        score = 100;
+                                    }
+                                    else
+                                    {
+                                        if (dice1 == 3 && dice2 == 2 && dice3 == 1)
+                                        {
+                                            score = 100;
+                                        }
+                                        else
+                                        {
+                                            score = dice1 + dice2 + dice3;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
-            if (dice1 == 1 && dice2 == 2 && dice3 == 3 ||
-                dice1 == 1 && dice2 == 3 && dice3 == 2 ||
-                dice1 == 2 && dice2 == 1 && dice3 == 3 ||
-                dice1 == 2 && dice2 == 3 && dice3 == 1 ||
-                dice1 == 3 && dice2 == 1 && dice3 == 2 ||
-                dice1 == 3 && dice2 == 2 && dice3 == 1)
-            {
-                return 100;
-            }
-
-            int score = dice1 + dice2 + dice3;
-            if (AtLeastOnePairIsEqual(dice1, dice2, dice3))
-            {
-                score *= 2;
-            }
             return score;
-        }
-
-        private static bool AllAreEqual(int dice1, int dice2, int dice3)
-        {
-            return dice1 == dice2 && dice1 == dice3;
-        }
-
-        private static bool AtLeastOnePairIsEqual(int dice1, int dice2, int dice3)
-        {
-            return dice1 == dice2 || dice2 == dice3 || dice1 == dice3;
         }
     }
 }

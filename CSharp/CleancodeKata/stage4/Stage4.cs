@@ -1,45 +1,48 @@
-﻿using System.Linq;
-
-namespace CleancodeKata.stage4
+﻿namespace CleancodeKata.stage4
 {
     /**
      * Make this code clean.
      */
     public class Stage4
     {
-        public double Compute(double[] productPrices, bool vip, bool blackFriday)
+        public double Compute(double[] c, bool v, bool b)
         {
-            double total = productPrices.Sum();
-            var discount = ComputeDiscount(productPrices.Length, vip, blackFriday);
-            var discountAmount = discount * total / 100;
-            return total - discountAmount;
+            double t = 0;
+            for (var i = 0; i < c.Length; ++i)
+            {
+                t += c[i];
+            }
+
+            var d = Compute(c.Length, b, v);
+            var d2 = d * t / 100;
+            return t - d2;
         }
 
-        public int ComputeDiscount(int numberOfProducts, bool vip, bool blackFriday)
+        public int Compute(int n, bool b1, bool b2)
         {
-            var percent = 0;
-            if (numberOfProducts >= 5 && numberOfProducts < 10)
+            var p = 0;
+            if (n >= 5 && n < 10)
             {
-                percent += 4;
+                p += 4;
             }
-            else if (numberOfProducts >= 10)
+            else if (n >= 10)
             {
-                percent += 10;
+                p += 10;
             }
 
-            if (blackFriday)
+            if (b1)
             {
                 // black friday discount
-                percent += 20;
+                p += 20;
             }
 
-            if (vip)
+            if (b2)
             {
                 // vip client
-                percent += 5;
+                p += 5;
             }
 
-            return percent;
+            return p;
         }
     }
 }

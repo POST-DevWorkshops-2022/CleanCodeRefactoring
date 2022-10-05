@@ -1,22 +1,20 @@
 ﻿using System.Collections.Generic;
 using CleancodeKata.stage1;
-using Xunit;
-using static CleancodeKata.stage1.Stage1;
 
 namespace CleancodeKata.Test.stage1
 {
     public class TestStage1
     {
-        [Theory]
-        [MemberData(nameof(ProvideCarts))]
-        public void ComputePrice(Items[] cart, int expectedPrice)
-        {
-            Stage1 stage1 = new Stage1();
-            // When
-            int price = stage1.ComputePrice(cart);
-            // Then
-            Assert.Equal(expectedPrice, price);
-        }
+        // [Theory]
+        // [MemberData(nameof(ProvideCarts))]
+        //public void ComputePrice(Items[] cart, int expectedPrice)
+        //{
+        //    Stage1 stage1 = new Stage1();
+        //    // When
+        //    int price = stage1.ComputePrice(cart);
+        //    // Then
+        //    Assert.AreEqual(expectedPrice, price);
+        //}
 
         public static IEnumerable<object[]> ProvideCarts
         {
