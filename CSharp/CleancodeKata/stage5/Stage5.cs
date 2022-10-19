@@ -8,19 +8,38 @@ namespace CleancodeKata.stage5
      */
     public class Stage5
     {
-        public bool IsEligible(string word)
+        public bool IsEligible(string x)
         {
-            if (word.Length >= 10)
+            var result = false;
+            if (x.Length >= 10)
             {
-                var vowels = new List<char> {'a', 'e', 'i', 'o', 'u', 'y'};
-                long nbVowels = word.ToCharArray().Where(vowels.Contains).Count();
+                var vowels = new List<char> { 'a', 'e', 'i', 'o', 'u', 'y' };
+                long nbVowels = x.ToCharArray().Where(vowels.Contains).Count();
+                // long words need more than 6
                 if (nbVowels >= 4)
                 {
-                    return true;
+                    result = true;
+                    return result;
                 }
 
-                var specialLetters = new List<char> {'p', 'm'};
-                long nbSpecialLetters = word.ToCharArray().Where(specialLetters.Contains).Count();
+                long nbSpecialLetters = 0;
+                for (var i = 0; i < x.Length; i++)
+                {
+                    if (x[i] == 'p')
+                    {
+                        nbSpecialLetters++;
+                    }
+
+                    if (x[i] == 'm')
+                    {
+                        nbSpecialLetters = nbSpecialLetters + 1;
+                    }
+                    else
+                    {
+                        nbSpecialLetters = nbSpecialLetters;
+                    }
+                }
+
                 if (nbSpecialLetters >= 3)
                 {
                     return true;
@@ -28,21 +47,30 @@ namespace CleancodeKata.stage5
             }
             else
             {
-                long nbLettersInUpperCase = word.ToCharArray().Where(c => c >= 'A' && c <= 'Z').Count();
+                long nbLettersInUpperCase = x.ToCharArray().Where(c => c >= 'A' && c <= 'Z').Count();
                 if (nbLettersInUpperCase >= 5)
                 {
                     return true;
                 }
 
-                var vowels = new List<char> {'a', 'e', 'i', 'o', 'u', 'y'};
-                long nbVowels = word.ToCharArray().Where(vowels.Contains).Count();
-                if (nbVowels >= 3)
+                var vowels = new List<char> { 'a', 'e', 'i', 'o', 'u', 'y' };
+
+                var nb = 0;
+                for (var i = 0; i < x.Length; i++)
+                {
+                    if (vowels.Contains(x[i]))
+                    {
+                        nb++;
+                    }
+                }
+
+                if (nb >= 3)
                 {
                     return true;
                 }
             }
 
-            return false;
+            return result;
         }
     }
 }
